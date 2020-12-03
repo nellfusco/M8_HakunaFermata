@@ -5,9 +5,9 @@ use_bpm 66
   sample "/Users/nell/Desktop/wind_4.wav"
 end
 
-play chord(:g, :m), attack: 2, release: 0.5
+#play chord(:g, :m), attack: 2, release: 0.5
 in_thread do
-  17.times do
+  21.times do
     play chord(:c4, :m), attack: 2, release: 0.5
     sleep 1
     play chord(:e3, :M), attack: 2, release: 0.5
@@ -20,7 +20,7 @@ in_thread do
 end
 
 in_thread do
-  3. times do
+  4.times do
     4.times do
       play_pattern_timed [:D3, :G3, :G3, :A3, :A3, :B3, :B3, :G3], [1, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5]
     end
@@ -31,34 +31,43 @@ in_thread do
 end
 sleep 1
 play_pattern_timed [:G3, :E3, :E3, :D3, :G3], [0.5, 0.5, 0.5, 1, 2]
-sleep 2
-
+sleep 4
 
 #Part 2 - Buffalo - Deeper, scarier
-in_thread do
-  sleep 4
-  11.times do
-    play chord(:D, :minor), attack: 2, release: 0.5
-    sleep 1.5
-    play :D, attack: 2
-    sleep 2.5
-    play chord(:C, :minor7), attack: 2, release: 0.5
-    sleep 1.5
-    play :C, attack: 2
-    play chord(:D, :minor), attack: 2, release: 0.5
-    sleep 1.5
-    play :D, attack: 2
-    sleep 2.5
-    play chord(:E, :minor7), attack: 2, release: 0.5
-    sleep 1.5
-    play :E, attack: 2
-    sleep 2.5
+1.times do
+  wait 91
+  in_thread do
+    sleep 4
+    11.times do
+      play chord(:D, :minor), attack: 2, release: 0.5
+      sleep 1.5
+      play :D, attack: 2
+      sleep 2.5
+      play chord(:C, :minor7), attack: 2, release: 0.5
+      sleep 1.5
+      play :C, attack: 2
+      play chord(:D, :minor), attack: 2, release: 0.5
+      sleep 1.5
+      play :D, attack: 2
+      sleep 2.5
+      play chord(:E, :minor7), attack: 2, release: 0.5
+      sleep 1.5
+      play :E, attack: 2
+      sleep 2.5
+    end
   end
-end
-
-in_thread do
-  3.times do
-    4.times do
+  
+  in_thread do
+    3.times do
+      4.times do
+        play_pattern_timed [:D3, :D3, :D3, :Fs3], [1, 1, 1, 1], amp: 2
+        sleep 2
+      end
+      2.times do
+        play_pattern_timed [:A3, :E4, :D4, :C4, :A3, :F4, :E4, :D4, :A3, :G4, :F4, :E4, :D4, :C4, :A3], [0.5, 1, 0.5, 0.5, 0.5, 1, 0.5, 0.5,0.5, 1, 0.5, 0.5, 0.5, 0.5, 1]
+      end
+    end
+    2.times do
       play_pattern_timed [:D3, :D3, :D3, :Fs3], [1, 1, 1, 1], amp: 2
       sleep 2
     end
@@ -66,52 +75,47 @@ in_thread do
       play_pattern_timed [:A3, :E4, :D4, :C4, :A3, :F4, :E4, :D4, :A3, :G4, :F4, :E4, :D4, :C4, :A3], [0.5, 1, 0.5, 0.5, 0.5, 1, 0.5, 0.5,0.5, 1, 0.5, 0.5, 0.5, 0.5, 1]
     end
   end
-  2.times do
-    play_pattern_timed [:D3, :D3, :D3, :Fs3], [1, 1, 1, 1], amp: 2
-    sleep 2
-  end
-  2.times do
-    play_pattern_timed [:A3, :E4, :D4, :C4, :A3, :F4, :E4, :D4, :A3, :G4, :F4, :E4, :D4, :C4, :A3], [0.5, 1, 0.5, 0.5, 0.5, 1, 0.5, 0.5,0.5, 1, 0.5, 0.5, 0.5, 0.5, 1]
-  end
 end
 
 # Part 3 - water inspried - pentatonic scale
 1.times do
-  sample "/Users/nell/Desktop/water_135.wav"
-end
-
-in_thread do
-  17.times do
-    play chord(:cs5, :M), attack: 2, release: 0.5
-    sleep 1
-    play chord(:e4, :M), attack: 2, release: 0.5
-    sleep 1
-    play chord(:fs4, :M), attack: 2, release: 0.5
-    sleep 1
-    play chord(:e4, :M), attack: 2, release: 0.5
-    sleep 1
+  wait 222
+  1.times do
+    sample "/Users/nell/Desktop/water_135.wav"
   end
-end
-
-in_thread do
-  5.times do
-    play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 1.25, 0.25, 0.25, 0.25, 0.25, 0.25]
-    play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+  
+  in_thread do
+    17.times do
+      play chord(:cs5, :M), attack: 2, release: 0.5
+      sleep 1
+      play chord(:e4, :M), attack: 2, release: 0.5
+      sleep 1
+      play chord(:fs4, :M), attack: 2, release: 0.5
+      sleep 1
+      play chord(:e4, :M), attack: 2, release: 0.5
+      sleep 1
+    end
   end
-  2.times do
-    play_pattern_timed scale(:c3, :major_pentatonic, num_octaves: 3), 0.25, release: 0.5
-    play_pattern_timed scale(:c3, :major_pentatonic, num_octaves: 3).reverse, 0.25, release: 0.5
-    
+  
+  in_thread do
+    5.times do
+      play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 1.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+      play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+    end
+    2.times do
+      play_pattern_timed scale(:c3, :major_pentatonic, num_octaves: 3), 0.25, release: 0.5
+      play_pattern_timed scale(:c3, :major_pentatonic, num_octaves: 3).reverse, 0.25, release: 0.5
+    end
+    5.times do
+      play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 1.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+      play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+    end
   end
-  5.times do
-    play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 1.25, 0.25, 0.25, 0.25, 0.25, 0.25]
-    play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
-  end
-end
-
-in_thread do
-  20.times do
-    sample :drum_cymbal_soft
-    sleep 5
+  
+  in_thread do
+    20.times do
+      sample :drum_cymbal_soft
+      sleep 5
+    end
   end
 end
