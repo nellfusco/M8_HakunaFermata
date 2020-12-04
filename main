@@ -1,41 +1,52 @@
-use_bpm 66
+# Keep default BPM (which is 60) to have a relaxing vibe
 
-# Part 1 - driving
+# Part 1
+# Run part 1 one time, before running the other 2 parts
 1.times do
-  sample "/Users/nell/Desktop/wind_4.wav"
-end
-
-#play chord(:g, :m), attack: 2, release: 0.5
-in_thread do
-  21.times do
-    play chord(:c4, :m), attack: 2, release: 0.5
-    sleep 1
-    play chord(:e3, :M), attack: 2, release: 0.5
-    sleep 1
-    play chord(:b3, :m), attack: 2, release: 0.5
-    sleep 1
-    play chord(:a3, :M), attack: 2, release: 0.5
-    sleep 1
+  # Use imported wind sounds as relaxing background noise
+  1.times do
+    sample "/Users/nell/Desktop/wind_4.wav"
   end
-end
-
-in_thread do
-  4.times do
+  
+  # This loop contains the slow, deep chords that set the mood
+  in_thread do
+    21.times do
+      play chord(:c4, :m), attack: 2, release: 0.5
+      sleep 1
+      play chord(:e3, :M), attack: 2, release: 0.5
+      sleep 1
+      play chord(:b3, :m), attack: 2, release: 0.5
+      sleep 1
+      play chord(:a3, :M), attack: 2, release: 0.5
+      sleep 1
+    end
+  end
+  
+  # This loop plays at the same time as the chords and contains the melody
+  in_thread do
     4.times do
-      play_pattern_timed [:D3, :G3, :G3, :A3, :A3, :B3, :B3, :G3], [1, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5]
-    end
-    2.times do
-      play_pattern_timed [:G3, :E3, :E3, :D3, :G3], [0.5, 0.5, 0.5, 0.5, 0.5]
+      4.times do
+        play_pattern_timed [:D3, :G3, :G3, :A3, :A3, :B3, :B3, :G3], [1, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5]
+      end
+      2.times do
+        play_pattern_timed [:G3, :E3, :E3, :D3, :G3], [0.5, 0.5, 0.5, 0.5, 0.5]
+      end
     end
   end
+  sleep 1
+  # Here we have the ending of the melody for part 1
+  play_pattern_timed [:G3, :E3, :E3, :D3, :G3], [0.5, 0.5, 0.5, 1, 2]
+  sleep 4
 end
-sleep 1
-play_pattern_timed [:G3, :E3, :E3, :D3, :G3], [0.5, 0.5, 0.5, 1, 2]
-sleep 4
 
-#Part 2 - Buffalo - Deeper, scarier
+# Part 2 - Deeper, scarier, sense of adventure/thrills
+# Run part 2 one time
+# Imported wind sounds are still occurring
 1.times do
-  wait 91
+  # Here we sleep 91 before part 2 starts so that it doesn't overlap with part 1
+  sleep 91
+  
+  # This loop plays the chords that will accompany part 2, they are meant to have a deeper, more mysterious tone than part 1
   in_thread do
     sleep 4
     11.times do
@@ -57,6 +68,7 @@ sleep 4
     end
   end
   
+  # This loop contains the melody for part 2 that will play at the same time as the chords - it also gives off a dangerious, stompy sound
   in_thread do
     3.times do
       4.times do
@@ -77,13 +89,17 @@ sleep 4
   end
 end
 
-# Part 3 - water inspried - pentatonic scale
+# Part 3 - water inspried with use of the pentatonic scale
+# Run part 2 one time
 1.times do
-  wait 222
+  # Here we sleep 165 before part 3 starts so that it doesn't overlap with the other 2 parts
+  sleep 165
+  # Use imported water sounds as relaxing background noise
   1.times do
     sample "/Users/nell/Desktop/water_135.wav"
   end
   
+  # This loop contains the chords for part 3 - they are lighter, higher pitched and happier, to accompany the use of the pentatonic scale
   in_thread do
     17.times do
       play chord(:cs5, :M), attack: 2, release: 0.5
@@ -97,6 +113,7 @@ end
     end
   end
   
+  # This loop contains the melody for part 3 and plays a the same time as the chords, it uses the notes in the pentatonic scale
   in_thread do
     5.times do
       play_pattern_timed [:Cs4, :Ds4, :Fs4, :Gs4, :As4, :Gs4, :Fs4, :Ds4, :Cs4, :Ds4, [:Fs4, :As4].choose, :Ds4, :Cs4], [0.25, 0.25, 0.25, 0.25, 1.25, 0.25, 0.25, 0.25, 0.25, 0.25]
@@ -112,8 +129,9 @@ end
     end
   end
   
+  # Here we include a soft cymbal sound to accompany part 3
   in_thread do
-    20.times do
+    19.times do
       sample :drum_cymbal_soft
       sleep 5
     end
