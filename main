@@ -5,7 +5,7 @@
 1.times do
   # Use imported wind sounds as relaxing background noise
   1.times do
-    sample "/Users/nell/Desktop/wind_4.wav"
+    sample "/Users/nell/Desktop/wind_4.wav", amp: 0.5
   end
   
   # This loop contains the slow, deep chords that set the mood
@@ -93,7 +93,7 @@ end
 # Run part 2 one time
 1.times do
   # Here we sleep 165 before part 3 starts so that it doesn't overlap with the other 2 parts
-  sleep 165
+  sleep 162
   # Use imported water sounds as relaxing background noise
   1.times do
     sample "/Users/nell/Desktop/water_135.wav"
